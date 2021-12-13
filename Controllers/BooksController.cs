@@ -50,5 +50,24 @@ namespace BookStore.Controllers
 
             return new JsonResult(result);
         }
+
+        [AllowAnonymous]
+        [HttpPost("import-books/{storeId}")]
+        public async Task<ActionResult> ImportBooks(string storeId, IFormFile file)
+        {
+            if (string.IsNullOrWhiteSpace(storeId))
+            {
+                return BadRequest();
+            }
+
+            if (file == null || file.Length == 0)
+            {
+                return BadRequest();
+            }
+
+            var result = await bookService.ImportBooks(storeId, file);
+
+            return new JsonResult(result);
+        }
     }
 }

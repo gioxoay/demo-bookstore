@@ -1,0 +1,18 @@
+<books>
+	<book>
+		<name>Book 1</name>
+		<isbn>ISBN000001</isbn>
+		<description>Book 1 Description</description>
+        <author>Author 1</author>
+		<price>14.5</price>
+		<quantity>100</quantity>
+	</book>
+	<book>
+		<name>Book 2</name>
+		<isbn>ISBN000002</isbn>
+		<description>Book 2 Description</description>
+        <author>Author 2</author>
+		<price>19.9</price>
+		<quantity>10</quantity>
+	</book>
+</books>

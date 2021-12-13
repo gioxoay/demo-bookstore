@@ -18,6 +18,8 @@ namespace BookStore.Data
 
         Task PartialUpdateAsync(object id, Action<IPartialUpdateBuilder<T>> builder);
 
+        Task UpsertAsync(Expression<Func<T, bool>> filter, T entity);
+
         Task DeleteAsync(object id);
 
         Task DeleteManyAsync(Expression<Func<T, bool>> filter);

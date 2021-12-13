@@ -88,6 +88,16 @@ namespace BookStore.Data
             }
         }
 
+        public async Task UpsertAsync(Expression<Func<T, bool>> filter, T entity)
+        {
+            FilterDefinition<T> filterDefinition = Builders<T>.Filter.Where(filter);
+
+            await collection.FindOneAndReplaceAsync<T>(filterDefinition, entity, options: new FindOneAndReplaceOptions<T, T>
+            {
+                IsUpsert = true
+            });
+        }
+
         public async Task DeleteManyAsync(Expression<Func<T, bool>> filter)
         {
             await collection.DeleteManyAsync(filter);
