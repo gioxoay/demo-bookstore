@@ -1,0 +1,39 @@
+﻿@using BookStore.Data.Domain
+
+<EditForm Model="@Model" OnValidSubmit="Save">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <Row>
+        <RowCol Md="12">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" @bind-value="@Model.Name" maxlength="255" />
+            <ValidationMessage For="@(() => Model.Name)"></ValidationMessage>
+        </RowCol>
+    </Row>
+
+    <div class="modal-footer mt-3">
+        <a @onclick="Cancel" class="btn btn-link link-secondary" data-dismiss="modal">
+            Cancel
+        </a>
+        <Button Type="ButtonType.Submit" BackgroundColor="TablerColor.Primary">
+            <Icon class="icon" Elements="@AppIcons.Plus" />
+            Save Changes
+        </Button>
+    </div>
+</EditForm>
+
+@code {
+    @inject IModalService ModalService
+
+    [Parameter]
+    public Store Model { get; set; }
+
+    private void Cancel()
+    {
+        ModalService.Close(ModalResult.Cancel());
+    }
+
+    private void Save()
+    {
+        ModalService.Close(ModalResult.Ok());
+    }
+}

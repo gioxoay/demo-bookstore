@@ -1,0 +1,29 @@
+﻿@page "/stores"
+@* @attribute [Authorize(Roles = Constants.Role_Administrators)] *@
+@using BookStore.Data.Domain
+
+<HeadPageTitle>Stores</HeadPageTitle>
+
+<Table Item="Store" Items="items" PageSize="10" Responsive>
+    <HeaderTemplate>
+        <Button BackgroundColor="TablerColor.Primary" class="ms-2" OnClick=@(() => OnItemAdd())>
+            <Icon class="align-text-top" Elements="@AppIcons.Plus" TextColor="TablerColor.White" Size="14" Filled />
+            <span class="ms-1">Add</span>
+        </Button>
+    </HeaderTemplate>
+
+    <ChildContent>
+        <Column Item="Store" Property="e=>e.Name" Title="Name" Sortable Searchable></Column>
+        <Column Item="Store" Title="" ActionColumn>
+            <Template>
+                <div class="d-flex justify-content-center">
+                    <ButtonList>
+                        <Button BackgroundColor="TablerColor.Primary" Size="ButtonSize.Small" Text="Edit" OnClick=@(() => OnItemEdit(context)) />
+                        <Button BackgroundColor="TablerColor.Danger" Size="ButtonSize.Small" Text="Delete" OnClick=@(() => OnItemDelete(context)) />
+                    </ButtonList>
+                </div>
+            </Template>
+        </Column>
+    </ChildContent>
+
+</Table>

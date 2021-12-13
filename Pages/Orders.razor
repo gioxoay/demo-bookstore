@@ -1,0 +1,17 @@
+﻿@page "/orders"
+@* @attribute [Authorize(Roles = Constants.Role_Administrators)] *@
+@using BookStore.Data.Domain
+
+<HeadPageTitle>Orders</HeadPageTitle>
+
+<Table Item="Order" Items="items" PageSize="10" Responsive>
+    <HeaderTemplate>
+    </HeaderTemplate>
+
+    <ChildContent>
+        <Column Item="Order" Property="e=>e.BookName" Title="Book Name"></Column>
+        <Column Item="Order" Property="e=>e.BookISBN" Title="Book ISBN"></Column>
+        <Column Item="Order" Property="e=>e.CreatedAt" Title="Created At"></Column>
+    </ChildContent>
+
+</Table>

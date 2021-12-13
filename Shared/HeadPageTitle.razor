@@ -1,0 +1,7 @@
+﻿<Microsoft.AspNetCore.Components.Web.PageTitle>@ChildContent</Microsoft.AspNetCore.Components.Web.PageTitle>
+<TabBlazor.PageTitle class="mb-2">@ChildContent</TabBlazor.PageTitle>
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

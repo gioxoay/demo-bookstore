@@ -1,0 +1,39 @@
+﻿<EditForm Model="@Model" OnValidSubmit="Save">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <Row>
+        <RowCol Md="6">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" @bind-value="@Model.Name" maxlength="255" />
+            <ValidationMessage For="@(() => Model.Name)"></ValidationMessage>
+        </RowCol>
+        <RowCol Md="6">
+            <label class="form-label">ISBN</label>
+            <input type="text" class="form-control" @bind-value="@Model.ISBN" maxlength="255" />
+            <ValidationMessage For="@(() => Model.ISBN)"></ValidationMessage>
+        </RowCol>
+    </Row>
+
+    <Row class="mt-3">
+        <RowCol Md="6">
+            <label class="form-label">Author</label>
+            <input type="text" class="form-control" @bind-value="@Model.Author" maxlength="255" />
+            <ValidationMessage For="@(() => Model.Author)"></ValidationMessage>
+        </RowCol>
+    </Row>
+
+    <Row class="mt-3">
+        <RowCol>
+            <label class="form-label">Description</label>
+            <textarea class="form-control" rows="12" @bind="Model.Description" @bind:event="oninput"></textarea>
+        </RowCol>
+    </Row>
+    <div class="modal-footer mt-3">
+        <a @onclick="Cancel" class="btn btn-link link-secondary" data-dismiss="modal">
+            Cancel
+        </a>
+        <Button Type="ButtonType.Submit" BackgroundColor="TablerColor.Primary">
+            <Icon class="icon" Elements="@AppIcons.Plus" />
+            Save Changes
+        </Button>
+    </div>
+</EditForm>

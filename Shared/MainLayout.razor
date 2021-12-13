@@ -1,0 +1,42 @@
+﻿@inherits LayoutComponentBase
+
+<ModalContainer />
+<ToastContainer />
+
+<MainNavigation />
+<div class="page @(appService.Settings.DarkMode ? "theme-dark": "")">
+    <div class="content">
+        <div class="container-fluid border-bottom py-2">
+            <div class="d-flex justify-content-end">
+                <AuthorizeView>
+                    <Authorized>
+                        <Dropdown>
+                            <ChildContent>
+                                <div class="d-flex align-items-center">
+                                    <Avatar Url="/images/default-avatar.png" Size="AvatarSize.Small" Rounded="AvatarRounded.Circle"></Avatar>
+                                    <div class="ms-2">
+                                        @context.User?.Identity?.Name
+                                    </div>
+                                </div>
+                            </ChildContent>
+
+                            <DropdownTemplate>
+                                <DropdownMenu>
+                                    <DropdownItem>My Account</DropdownItem>
+                                    <div class="dropdown-divider"></div>
+                                    <DropdownItem href="/logout">Sign Out</DropdownItem>
+                                </DropdownMenu>
+                            </DropdownTemplate>
+                        </Dropdown>
+                    </Authorized>
+                    <NotAuthorized>
+                        <a class="btn" href="/login">Sign In</a>
+                    </NotAuthorized>
+                </AuthorizeView>
+            </div>
+        </div>
+        <div class="container-fluid mt-2">
+            @Body
+        </div>
+    </div>
+</div>
